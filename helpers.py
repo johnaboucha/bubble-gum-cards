@@ -21,8 +21,6 @@ def has_next(url="", to_skip=0):
 	#url = "https://2wf0rg.deta.dev/api/cards/?skip="+str(to_skip)+"&top=1"
 	response = urlopen(url)
 	data_json = json.loads(response.read())
-	print("length: " + str(len(data_json)) + " : "+str(to_skip))
-	print(data_json)
 	if len(data_json) > 0:
 		return True
 	return False
