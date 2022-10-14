@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+		<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+		<title>Bubble Gum Cards</title>
+	</head>
+<body>
+	<main class="container">
+		<header>
+			<hgroup>
+				<h1>Bubble Gum Cards</h1>
+				<h2>A curated set of the world's best baseball cards</h2>
+			</hgroup>
+		</header>
+		<div class="content">
+			<aside>
+				<h3>Categories</h3>
+				<ul>
+					<li><a href="/">All Cards</a></li>
+					{% for category in categories["categories"] %}
+						<li><a href="/category/{{ category|lower }}">{{ category }}</a></li>
+					{% endfor %}
+				</ul>
+			</aside>
+			<div class="sheet">
+				<div class="wrapper">
+					{% for card in cards %}
+						<div><img src="https://2wf0rg.deta.dev/static/cards/{{ card['image'] }}"/></div>
+					{% endfor %}
+				</div>
+				<div class="navigation">
+					{% if has_prev %}
+						<a href="/page/{{ prev_page }}" role="button">Previous</a>
+					{% endif %}
+					{% if has_next %}
+						<a href="/page/{{ next_page }}" role="button">Next</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+    </main>
+</body>
+</html>

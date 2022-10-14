@@ -1,0 +1,59 @@
+address, blockquote, dl, figure, form, ol, p, pre, table, ul {
+	color: rgb(50,50,50);
+}
+
+code, kbd, pre {
+	color: rgb(90, 90, 90);
+}
+
+h1 {
+	margin-bottom: 20px;
+}
+
+header h1,
+h2,
+h3 {
+	margin-bottom: 5px;
+	margin-top: 0px;
+}
+
+h3 {
+	font-size: 26px;
+}
+
+p {
+	margin-bottom: 20px;
+}
+
+div.content {
+	display: grid;
+  	grid-template-columns: repeat(4, 1fr);
+}
+
+aside {
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+.sheet {
+	grid-column-start: 2;
+	grid-column-end: 5;
+}
+
+.wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	margin-bottom: 40px;
+}
+
+.wrapper div {
+	padding: 10px;
+}
+
+.wrapper img {
+	border-radius: 3px;
+}
+
+.navigation {
+	text-align: center;
+}
