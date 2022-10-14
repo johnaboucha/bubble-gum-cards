@@ -21,9 +21,9 @@
 			<aside>
 				<h3>Categories</h3>
 				<ul>
-					<li><a href="/">All Cards</a></li>
+					<li><a href="/page/1">All Cards</a></li>
 					{% for category in categories["categories"] %}
-						<li><a href="/category/{{ category|lower }}">{{ category }}</a></li>
+						<li><a href="/category/{{ category|lower }}/page/1">{{ category }}</a></li>
 					{% endfor %}
 				</ul>
 			</aside>
@@ -34,11 +34,11 @@
 					{% endfor %}
 				</div>
 				<div class="navigation">
-					{% if has_prev %}
-						<a href="/page/{{ prev_page }}" role="button">Previous</a>
+					{% if data["has_prev"] %}
+						<a href="{{ data["prev_page"] }}" role="button">Previous</a>
 					{% endif %}
-					{% if has_next %}
-						<a href="/page/{{ next_page }}" role="button">Next</a>
+					{% if data["has_next"] %}
+						<a href="{{ data["next_page"] }}" role="button">Next</a>
 					{% endif %}
 				</div>
 			</div>
