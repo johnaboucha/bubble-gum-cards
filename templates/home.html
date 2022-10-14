@@ -20,7 +20,15 @@
 		<div class="content">
 			<aside>
 				<h3>Categories</h3>
-				<ul>
+				<div class="mobile">
+					<select id="card-select" onchange="get_cards()">
+						<option value="/page/1">All Cards</option>
+						{% for category in categories["categories"] %}
+							<option value="/category/{{ category|lower }}/page/1">{{ category }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<ul class="desktop">
 					<li><a href="/page/1">All Cards</a></li>
 					{% for category in categories["categories"] %}
 						<li><a href="/category/{{ category|lower }}/page/1">{{ category }}</a></li>
@@ -28,7 +36,8 @@
 				</ul>
 			</aside>
 			<div class="sheet">
-				<div class="wrapper">
+				<h4>Category is: {{ data["category"] }}</h4>
+				<div class="wrapper">				
 					{% for card in cards %}
 						<div><img src="https://2wf0rg.deta.dev/static/cards/{{ card['image'] }}"/></div>
 					{% endfor %}
@@ -44,5 +53,11 @@
 			</div>
 		</div>
     </main>
+	<script>
+		function get_cards() {
+			select = document.querySelector("#card-select").value
+			window.location.href = select
+		}
+	</script>
 </body>
 </html>

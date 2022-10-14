@@ -16,6 +16,7 @@ def page(page):
 	data = {}
 	url = "https://2wf0rg.deta.dev/api/cards/?skip="+str(page*9)+"&top=1"
 	data["has_next"] = has_next(url=url)
+	data["category"] = "All Cards"
 	data["next_page"] = "/page/"+str(page + 1)
 	data["prev_page"] = "/page/"+str(page - 1)
 	if page > 1:
@@ -28,13 +29,17 @@ def page(page):
 
 @app.route('/category/<string:category>/page/<int:page>')
 def category(category, page):
+	data = {}
+	data["category"] = category.title()
+
 	category = category.replace(" ", "%20")
 	skip = (page - 1) * 9
 	categories = get_categories()
 	cards = get_cards(skip=skip, category=category)
-	data = {}
+	
 	url = "https://2wf0rg.deta.dev/api/cards/?category="+category+"&skip="+str(page*9)+"&top=1"
 	data["has_next"] = has_next(url=url)
+	
 	data["next_page"] = "/category/"+category+"/page/"+str(page + 1)
 	data["prev_page"] = "/category/"+category+"/page/"+str(page - 1)
 	if page > 1:
@@ -46,4 +51,4 @@ def category(category, page):
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()

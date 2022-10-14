@@ -61,8 +61,40 @@ aside li {
 
 .wrapper img {
 	border-radius: 3px;
+	box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .navigation {
 	text-align: center;
+}
+
+.mobile {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.mobile {
+		display: block;
+	}
+	.desktop {
+		display: none;
+	}
+
+	aside {
+		grid-column-start: 1;
+		grid-column-end: 5;
+	}
+	.sheet {
+		grid-column-start: 1;
+		grid-column-end: 5;
+	}
+}
+
+@media (max-width: 576px) {
+	.wrapper {
+		display: grid;
+		grid-template-columns: 1fr;
+		margin-bottom: 40px;
+		text-align: center;
+	}
 }
